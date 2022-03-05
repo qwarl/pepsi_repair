@@ -1,4 +1,4 @@
-import { View, Text, ImageBackground, Image, TouchableOpacity, ProgressViewIOSComponent, Dimensions, TextInput, Button, ScrollView } from 'react-native'
+import { View, Text, ImageBackground, Image, TouchableOpacity, ProgressViewIOSComponent, Dimensions, TextInput, Button, ScrollView, StatusBar } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import images from '../../constants/images'
 import styles from './style';
@@ -18,7 +18,19 @@ interface responseChild {
     fileName?: string
 }
 
-const Register = () => {
+interface subNavigation {
+    navigate: (where: string, params?: string) => void;
+}
+
+interface typeProps {
+    navigation: subNavigation;
+}
+
+
+const handleNavigation = (myEvent: subNavigation) => {
+    myEvent.navigate("Success");
+}
+const Register = (prop: typeProps) => {
     const [image1, setImage1] = useState<responseChild | null>(null);
     const [image2, setImage2] = useState<responseChild | null>(null);
     const [image3, setImage3] = useState<responseChild | null>(null);
@@ -156,9 +168,11 @@ const Register = () => {
         hideDatePicker();
     };
 
+    const { navigation } = prop
     return (
 
         <ImageBackground source={images.bg} style={styles.container}>
+            <StatusBar translucent backgroundColor="transparent" />
             <Image source={images.nav} style={styles.nav_style} />
             <ScrollView>
                 <Image source={images.text_register} style={styles.text_register_style} />
@@ -314,28 +328,28 @@ const Register = () => {
                                         <Text style={styles.white_text_style}>Tỉnh / Thành Phố</Text>
 
                                         <View
-                                        style={{
-                                            backgroundColor: 'white',
-                                            elevation: 1,
-                                            borderWidth: 0.8,
-                                            width: width / 2.3,
-                                            borderRadius: 5,
-                                        }}
-                                    >
-                                        <Picker
-                                            selectedValue={selectedProvince}
                                             style={{
-                                                fontSize: 18,
-                                                color: 'grey',
-                                                fontWeight: "bold",
-                                                // backgroundColor: 'orange',
-                                                borderRadius: 10,
-                                            }}
-                                            onValueChange={(itemValue, itemIndex) => {
-                                                setSelectedProvince(itemValue)
+                                                backgroundColor: 'white',
+                                                elevation: 1,
+                                                borderWidth: 0.8,
+                                                width: width / 2.3,
+                                                borderRadius: 5,
                                             }}
                                         >
-                                            {/* {
+                                            <Picker
+                                                selectedValue={selectedProvince}
+                                                style={{
+                                                    fontSize: 18,
+                                                    color: 'grey',
+                                                    fontWeight: "bold",
+                                                    // backgroundColor: 'orange',
+                                                    borderRadius: 10,
+                                                }}
+                                                onValueChange={(itemValue, itemIndex) => {
+                                                    setSelectedProvince(itemValue)
+                                                }}
+                                            >
+                                                {/* {
                                                 selectedProvince == "default" && (
                                                     <Picker.Item
                                                         value="default"
@@ -343,17 +357,17 @@ const Register = () => {
                                                     />
                                                 )
                                             } */}
-                                            {dataProvince &&
-                                                dataProvince.map((province: any) => (
-                                                    <Picker.Item
-                                                        key={province.code}
-                                                        value={selectedProvince}
-                                                        label={province.name}
-                                                        value={province.code}
-                                                    />
-                                                ))}
-                                        </Picker>
-                                    </View>
+                                                {dataProvince &&
+                                                    dataProvince.map((province: any) => (
+                                                        <Picker.Item
+                                                            key={province.code}
+                                                            value={selectedProvince}
+                                                            label={province.name}
+                                                            value={province.code}
+                                                        />
+                                                    ))}
+                                            </Picker>
+                                        </View>
                                     </View>
 
                                     <View style={styles.district_input_style}>
@@ -445,10 +459,10 @@ const Register = () => {
                                     <View style={styles.view_style}>
                                         <TouchableOpacity onPress={selectImage3}>
 
-                                            <View>
-                                                {/* <Text style={styles.text_view}>Đính kèm hình</Text> */}
-                                                <TextInput value={image3?.fileName} editable={false} placeholder="Đính kèm hình" />
-                                            </View>
+
+                                            {/* <Text style={styles.text_view}>Đính kèm hình</Text> */}
+                                            <TextInput value={image3?.fileName} editable={false} placeholder="Đính kèm hình" />
+
                                         </TouchableOpacity>
                                     </View>
                                 </View>
@@ -458,7 +472,7 @@ const Register = () => {
 
                 </View>
 
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => handleNavigation(navigation)}>
                     <Image source={images.btn_register} style={styles.btn_register_style} />
                 </TouchableOpacity>
             </ScrollView>

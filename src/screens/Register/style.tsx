@@ -102,7 +102,9 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 8,
         borderColor: '#48a1d3',
-        backgroundColor: '#0d5ea7'
+        backgroundColor: '#0d5ea7',
+        marginTop:width*0.07,
+        paddingBottom:width*0.05
     },
     input_party_style: {
         // fontFamily: 'Myriad Pro',

@@ -131,7 +131,31 @@ const styles = StyleSheet.create({
         height:width*0.1,
         justifyContent:'center'
     },
-
+    straightLine:{
+        width:0.8,
+        height:"80%",
+        backgroundColor:"#0d5ea7",
+        position: "absolute",
+        zIndex:10,
+        left: 45,
+        alignSelf:"center",
+    },
+    inputField: {
+        backgroundColor: "#fff",
+        borderRadius: 2,
+        // borderWidth: 1,
+        // borderColor: "#00355A",
+        paddingLeft: 12,
+        paddingRight: 12,
+        paddingTop: 5,
+        paddingBottom: 5,
+        // height:width*0.1,
+    },
+    iconStyle: {
+        position: "absolute",
+        right: 10,
+        top: 5,
+    },
 });
 
 export default styles

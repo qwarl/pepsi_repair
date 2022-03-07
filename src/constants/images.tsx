@@ -13,6 +13,7 @@ const images = {
     CONTENT_SUCCESS: require('../img/content.png'),
     BACKGROUND_SUCCESS: require('../img/backgroundSuccess.png'),
     IMAGE_ICON: require("../img/image_icon.png"),
+    DATE_ICON: require("../img/date.png"),
 }
 
 export default images

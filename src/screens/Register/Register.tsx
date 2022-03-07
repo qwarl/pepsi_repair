@@ -418,9 +418,9 @@ const Register = (prop: typeProps) => {
                                 <Text style={styles.white_text_style}>Thời gian tiệc</Text>
                                 <View>
                                     <View >
-                                        <TouchableOpacity style={{ flexDirection: 'row', backgroundColor: '#FFFFFF', justifyContent: 'space-between', alignItems: 'center' }} onPress={showDatePicker}>
-                                            <Text style={styles.text_view}>{dateTime}</Text>
-                                            <Image source={images.calendar} />
+                                        <TouchableOpacity style={{ flex: 1, flexDirection: 'row' }} onPress={showDatePicker}>
+                                            <Text style={[styles.inputField, { flex: 1 }]}>{dateTime}</Text>
+                                            <Image source={images.DATE_ICON} style={styles.iconStyle} />
                                         </TouchableOpacity>
                                     </View>
                                     <DateTimePickerModal
@@ -436,19 +436,23 @@ const Register = (prop: typeProps) => {
                                 <View>
                                     <Text style={styles.white_text_style}>Hình thiệp cưới</Text>
                                     <View style={styles.view_style}>
-                                        <TouchableOpacity onPress={selectImage1}>
-                                            <TextInput value={image1?.fileName} editable={false} placeholder="Đính kèm hình" />
+                                        <TouchableOpacity style={{ flex: 1, flexDirection: 'row', position: 'relative' }} onPress={selectImage1}>
+                                            <Image style={{ position: "absolute", left: 10, top: 8, zIndex: 100 }} source={images.IMAGE_ICON} />
+                                            <View style={styles.straightLine}></View>
+                                            <TextInput value={image1?.fileName} editable={false} placeholder="Đính kèm hình" style={[styles.inputField, { flex: 1, position: 'relative', zIndex: 0, paddingLeft: 50 }]} />
                                         </TouchableOpacity>
                                     </View>
                                 </View>
                                 <View>
                                     <Text style={styles.white_text_style}>Hình hóa đơn bán hàng</Text>
                                     <View style={styles.view_style}>
-                                        <TouchableOpacity onPress={selectImage2}>
+                                        <TouchableOpacity style={{ flex: 1, flexDirection: 'row', position: 'relative' }} onPress={selectImage2}>
 
                                             <View>
-                                                {/* <Text style={styles.text_view}>Đính kèm hình</Text> */}
-                                                <TextInput value={image2?.fileName} editable={false} placeholder="Đính kèm hình" />
+                                                <Image style={{ position: "absolute", left: 10, top: 8, zIndex: 100 }} source={images.IMAGE_ICON} />
+                                                <View style={styles.straightLine}></View>
+
+                                                <TextInput style={[styles.inputField, { flex: 1, position: 'relative', zIndex: 0, paddingLeft: 50 }]} value={image2?.fileName} editable={false} placeholder="Đính kèm hình" />
 
                                             </View>
                                         </TouchableOpacity>
@@ -457,11 +461,11 @@ const Register = (prop: typeProps) => {
                                 <View>
                                     <Text style={styles.white_text_style}>Hình khối sản phẩm</Text>
                                     <View style={styles.view_style}>
-                                        <TouchableOpacity onPress={selectImage3}>
+                                        <TouchableOpacity style={{ flex: 1, flexDirection: 'row', position: 'relative' }} onPress={selectImage3}>
 
-
-                                            {/* <Text style={styles.text_view}>Đính kèm hình</Text> */}
-                                            <TextInput value={image3?.fileName} editable={false} placeholder="Đính kèm hình" />
+                                            <Image style={{ position: "absolute", left: 10, top: 8, zIndex: 100 }} source={images.IMAGE_ICON} />
+                                            <View style={styles.straightLine}></View>
+                                            <TextInput style={[styles.inputField, { flex: 1, position: 'relative', zIndex: 0, paddingLeft: 50 }]} value={image3?.fileName} editable={false} placeholder="Đính kèm hình" />
 
                                         </TouchableOpacity>
                                     </View>
